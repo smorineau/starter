@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 if [[ ${1} =~ ^[a-z][0-9a-z-]*$ ]]; then
     rm -rf .git
-    sed -i s/starter/$1/g pom.xml
+    sed s/starter/$1/g pom.xml > temp.tmp
+    rm pom.xml
+    mv temp.tmp pom.xml
     git init
     echo "git remote add origin <LINK>"
     echo "git push -u origin master"
